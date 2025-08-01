@@ -9,7 +9,8 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="#">Home</a>
         </li>
-        <li class="nav-item">
+        <% if (locals.user) { %>
+          <li class="nav-item">
           <a class="nav-link" href="#">Add blog</a>
         </li>
         <!-- <li class="nav-item">
@@ -20,12 +21,21 @@
             Samia says
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item" href="#">logout</a></li>
+            <li><a class="dropdown-item" href="/user/logout">logout</a></li>
             <!-- <li><a class="dropdown-item" href="#">Another action</a></li>
             <li><a class="dropdown-item" href="#">Something else here</a></li> -->
           </ul>
         </li>
       </ul>
+        <% }  else { %>
+           <li class="nav-item">
+          <a class="nav-link" href="/user/signup">Create Account</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/user/signin">signin</a>
+        </li>
+          <% } %>
+       
     </div>
   </div>
 </nav>

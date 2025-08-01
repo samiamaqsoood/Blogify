@@ -28,7 +28,7 @@ app.use(checkForAuthenticationCookie("token"));
 app.use("/user", userRouter);
 
 app.get("/",(req,res)=>{
-    return res.render("home",{
+    return res.render("home", {
         user : req.user,
     });
 })
