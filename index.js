@@ -15,6 +15,10 @@ mongoose.connect("mongodb://127.0.0.1:27017/blogify")
     console.log("can't connect to MongoDB" ,error);
 })
 const userRouter = require("./routes/user");
+const blogRouter = require("./routes/blog");
+
+const Blog = require("./models/blog");
+
 
 app.use(express.urlencoded({extended:false}))
 app.set("view engine", "ejs");
@@ -22,14 +26,20 @@ app.set("views",path.resolve("./views"));
 
 app.use(cookieParser());
 app.use(checkForAuthenticationCookie("token"));
+app.use(express.static(path.resolve("./public"))); //tells express to serve public as static but not as route
 
 
 
 app.use("/user", userRouter);
+app.use("/blog", blogRouter);
 
-app.get("/",(req,res)=>{
+
+app.get("/",async (req,res)=>{
+    const allBlogs = await Blog.find({});
     return res.render("home", {
         user : req.user,
+        blogs : allBlogs,
+
     });
 })
 app.listen(PORT, ()=>{

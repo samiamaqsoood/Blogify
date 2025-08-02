@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <%-include('./partials/head.ejs') %>
+</head>
+<body>
+   <%-include('./partials/navbar.ejs') %>
+   <div class="container mt-4">
+    <form action="/blog" method="post" enctype="multipart/form-data">
+    <label for="title" class="form-label">Cover Image</label>
+    <input type="file" class="form-control" id="coverImage" name="coverImage" >
+     <label for="title" class="form-label mt-4">Title</label>
+    <input type="text" class="form-control" id="title" name="title" aria-describedby="emailHelp">
+    <label for="content" class="form-label mt-3">Content</label>
+    <textarea type="text" class="form-control" id="content" name="content"></textarea>
+    <button class="btn btn-primary mt-3">Add blog</button>
+    </form>
+   </div>
+   <%-include('./partials/scripts.ejs') %>
+</body>
+</html>
